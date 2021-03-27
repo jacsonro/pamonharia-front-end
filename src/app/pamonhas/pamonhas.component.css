@@ -1,0 +1,93 @@
+
+  h2 {
+    font-family: Courier New, monospace;
+    font-size: 1em;
+    margin: 1em 0 0.3em;
+  }
+  
+    
+  img {
+    width: 150px;
+    height: 100px;
+    border: 1px solid #000;
+  }
+  
+  
+  .narrow {
+    width: 100px;
+    height: 150px;
+    margin-top: 10px;
+  }
+  
+  .fill {
+    object-fit: fill;
+  }
+  
+  .contain {
+    object-fit: contain;
+  }
+  
+  .cover {
+    object-fit: cover;
+  }
+  
+  .none {
+    object-fit: none;
+  }
+  
+  .scale-down {
+    object-fit: scale-down;
+  }
+
+  .gallery_product
+{
+    margin-bottom: 0px;
+}
+.gallery_product .title{
+  color: rgb(245, 62, 6);
+  text-shadow: 2px 2px #00050e;
+  margin: 0;
+  position: absolute;
+  bottom: 100px;
+  left: 10px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+mat-grid-tile {
+  background: lightblue;
+}
+
+.noticias{
+  display: flex;
+  justify-content: flex-start;
+}
+.noticias img,
+.noticias div{
+  padding: 10px
+}
+
+.mat-form-field {
+  margin-right: 8px;
+}
+
+.my-list-1 .mat-list-option .mat-selection-list{
+  height: 100px;
+}
+.my-class1{
+  object-fit: cover; 
+  width: 100%; 
+  height: 130%;
+  cursor: pointer;
+}
+.my-class2{
+  object-fit: cover; 
+  width: 100%; 
+  height: 130%;
+}

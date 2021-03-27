@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div formArrayName="productQuantity">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th colspan="2">Produto</th>
+                  <th scope="col">Quant.</th>
+                  <th scope="col">Unid.</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let order of produtoQuantFormArray.controls; let index = index">
+                <tr>
+                  <td>
+                    <img mat-list-avatar src={{cart[index].imgUrl}} alt="">
+                  </td>
+                  <td>
+                    <div [innerHTML]=cart[index].text></div>
+                  </td>
+                  <td>
+                    <input type="number" style="width: 50px;" min="0" [formControlName]="index">
+                  </td>
+                  <td>
+                    {{cart[index].valor | currency:'BRL'}}
+                  </td>
+                  <td>
+                    {{cart[index].valor * form.value.productQuantity[index] | currency:'BRL'}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="container">
+              <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col-4">
+                  <strong>Valor Total: {{form.value.total | currency:'BRL'}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Realizar Pagamento</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!--
+Form Status: {{ form.status | json }}
+Form Value: {{ form.value | json }}
+-->

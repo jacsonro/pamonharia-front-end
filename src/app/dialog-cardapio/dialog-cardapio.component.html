@@ -1,0 +1,27 @@
+<form [formGroup]="formCardapio" (ngSubmit)="submit()">
+  <div formArrayName="pamonha">
+    <h2 mat-dialog-title>Cardápio de Pamonhas</h2>
+    <mat-dialog-content class="mat-typography">
+      <table *ngFor="let pamonha of typesOfPamonhas; let index = index">
+        <tr>
+          <td style="width:10px;">
+            <img mat-list-avatar src={{pamonha.imgUrl}} alt="" width="100px;">
+          </td>
+          <td style="width:300px;">
+            <div [innerHTML]=pamonha.text></div>
+          </td>
+          <td style="width:10px;">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" [formControlName]="index">
+            </div>
+          </td>
+        </tr>
+      </table>
+
+    </mat-dialog-content>
+  </div>
+  <hr class="my-4">
+  <div class="text-center">
+    <button class="btn btn-primary btn-lg" type="submit">Continue</button>
+  </div>
+</form>

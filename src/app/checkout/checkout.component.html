@@ -1,0 +1,191 @@
+<form [formGroup]="formCheckout" (ngSubmit)="submit()">
+  <ng-container formGroupName='sale'>
+  <input type="hidden" formControlName="total">
+</ng-container>
+  <div class="row g-3">
+    <div class="col-md-3 col-lg-2 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Valor da Compra</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+          <div>
+            <h6 class="my-0">Sub Total</h6>
+          </div>
+          <span class="text-muted">{{subtotal | currency:'BRL'}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+          <div>
+            <h6 class="my-0">Desconto</h6>
+          </div>
+          <span class="text-muted">R$ 0,00</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <div>
+            <h6 class="my-0">Total</h6>
+          </div>
+          <strong>{{subtotal | currency:'BRL'}}</strong>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-2 col-lg-1"></div>
+    <div class="col-md-7 col-lg-8">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted">Endereço para Cobrança</span>
+    </h4>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label">Nome</label>
+            <input type="text" class="form-control" id="firstName" formControlName='firstName'>
+            <app-field-error [displayError]="isFieldValid('firstName')" errorMsg="Por favor informe seu nome">
+            </app-field-error>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="lastName" class="form-label">Sobrenome</label>
+            <input type="text" class="form-control" formControlName="lastName" placeholder="" value="" >
+            <app-field-error [displayError]="isFieldValid('lastName')" errorMsg="Por favor informe seu sobrenome">
+            </app-field-error>
+          </div>
+
+          <div class="col-12">
+            <label for="username" class="form-label">Nome de Usuário</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text">@</span>
+              <input type="text" class="form-control" formControlName="username" placeholder="Username" required>
+              <app-field-error [displayError]="isFieldValid('username')" errorMsg="O nome de usuário é requerido">
+              </app-field-error>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="email" class="form-label">E-mail <span class="text-muted">(Opcional)</span></label>
+            <input type="email" class="form-control" formControlName="email" placeholder="you@example.com">
+            <div class="invalid-feedback">
+              Porfavor entre com seu endereço de e-mail para receber nossas promoções.
+            </div>
+            <app-field-error [displayError]="isFieldValid('username')" errorMsg="O nome de usuário é requerido">
+            </app-field-error>
+          </div>
+
+          <div class="col-12">
+            <label for="address" class="form-label">Endereço</label>
+            <input type="text" class="form-control" formControlName="address" placeholder="1234 Main St" required>
+            <div class="invalid-feedback">
+              Porfavor entre com seu endereço.
+            </div>
+            <app-field-error [displayError]="isFieldValid('username')" errorMsg="O nome de usuário é requerido">
+            </app-field-error>
+          </div>
+
+          <div class="col-12">
+            <label for="address2" class="form-label">Endereço 2 <span class="text-muted">(Opcional)</span></label>
+            <input type="text" class="form-control" formControlName="address2" placeholder="Apartment or suite">
+          </div>
+
+          <div class="col-md-3">
+            <label for="country" class="form-label">País</label>
+            <select class="form-select" formControlName="country" required>
+              <option value="">Selecione...</option>
+              <option>Brasil</option>
+            </select>
+            <app-field-error [displayError]="isFieldValid('country')" errorMsg=" Porfavor selecione um país">
+            </app-field-error>
+          </div>
+
+          <div class="col-md-3">
+            <label for="state" class="form-label">Estado</label>
+            <select class="form-select" formControlName="state" required>
+              <option value="">Selecione...</option>
+              <option>Goiás</option>
+            </select>
+            <app-field-error [displayError]="isFieldValid('state')" errorMsg="Porfavor selecione um estado">
+            </app-field-error>
+          </div>
+
+          <div class="col-md-3">
+            <label for="city" class="form-label">Cidade</label>
+            <select class="form-select" formControlName="city" required>
+              <option value="">Selecione...</option>
+              <option>Goiânia</option>
+            </select>
+            <app-field-error [displayError]="isFieldValid('city')" errorMsg="Porfavor selecione uma cidade">
+            </app-field-error>
+          </div>
+
+          <div class="col-md-3">
+            <label for="zip" class="form-label">CEP</label>
+            <input type="text" class="form-control" formControlName="zip" placeholder="" required>
+            <app-field-error [displayError]="isFieldValid('zip')" errorMsg="Por favor informe o CEP">
+            </app-field-error>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" formControlName="sameAddress">
+          <label class="form-check-label" for="same-address">O endereço de entrega é igual ao meu endereço de cobrança</label>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" formControlName="saveInfo">
+          <label class="form-check-label" for="save-info">Salve minhas informações</label>
+        </div>
+
+        <hr class="my-4">
+
+        <h4 class="mb-3">Pagamento</h4>
+
+        <div class="my-3">
+          <div class="form-check">
+            <div  *ngFor="let item of paymentTypes">
+            <label class="form-check-label" for="paymentType">
+            <input type="radio" class="form-check-input" [value]="item.type" formControlName="paymentType" required>
+            {{item.descr}}
+            </label>
+          </div>
+          </div>
+        </div>
+
+        <div class="row gy-3">
+          <div class="col-md-6">
+            <label for="cc-name" class="form-label">Nome Impresso no Cartão</label>
+            <input type="text" class="form-control" formControlName="ccName" placeholder="" required>
+           
+            <app-field-error [displayError]="isFieldValid('ccName')" errorMsg="O nome é requerido">
+            </app-field-error>
+          </div>
+
+          <div class="col-md-6">
+            <label for="cc-number" class="form-label">Número do Cartão</label>
+            <input type="text" class="form-control" formControlName="ccNumber" placeholder="" required>
+            <app-field-error [displayError]="isFieldValid('ccNumber')" errorMsg="O número do cartão é requerido">
+            </app-field-error>
+          </div>
+
+          <div class="col-md-3">
+            <label for="cc-expiration" class="form-label">Data de Validade</label>
+            <input type="text" class="form-control" formControlName="ccExpiration" placeholder="" required>
+            <app-field-error [displayError]="isFieldValid('ccExpiration')" errorMsg="A data de validade é requerida">
+            </app-field-error>
+          </div>
+
+          <div class="col-md-3">
+            <label for="cc-cvv" class="form-label">CVV</label>
+            <input type="text" class="form-control" formControlName="ccCvv" placeholder="" required>
+            <app-field-error [displayError]="isFieldValid('ccCvv')" errorMsg="O código de segurança é requerido">
+            </app-field-error>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Finalizar Compra</button>
+    </div>
+  </div>
+</form>
+<!--
+Form Status: {{ formCheckout.status | json }}
+Form Value: {{ formCheckout.value | json }}
+-->
