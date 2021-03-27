@@ -1,4 +1,4 @@
-# PamonhaFrontEnd
+# PamonhariaFrontEnd
 Este Projeto faz parte do desafio "Criando uma solução de e-commerce com microsserviços" da Digital Innovation One
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
